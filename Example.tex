@@ -1,0 +1,66 @@
+% !TeX spellcheck = en_US
+\documentclass[oneside]{JenThesis}
+%chaptertoc,english,print,oneside,parula,chapterprefix,numbers=noenddot,hidelinks
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	            Packages                 %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+	\usepackage{lipsum}
+	\usepackage{csquotes}
+	\usepackage{nth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	         Author information          %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+	\salutation{M.Sc.}
+	\author{Douglas Noël Adams}
+	\email{Douglas.Adams@dont-panic.com}
+	\dateofbirth{\nth{11} of March 1952}
+	\placeofbirth{Cambridge}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	       University information        %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\logo{figures/logo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	        Thesis information           %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\title{Application of Babel Fish to protect against Vogon poetry}
+	\subtitle{Do not panic\,!}
+	\kind{Dissertation}
+	\degree{doctor rerum naturalium}
+	\dedication[Isaac Asimov]{The most exciting phrase to hear in science, the one that heralds new discoveries, is not \enquote{Eureka!} but \enquote{That's funny!}.}
+	
+	\dayofsubmission{\nth{25} May 1978\vspace*{1ex}}
+	\dayofdisputation{End of the Universe}
+	
+	\referee{\parbox[t]{5.5cm}{Prof.\,Dr. Herbert George Wells\\ (Kings College London)\\}}
+	\referee{\parbox[t]{5.5cm}{M.D. Arthur Conan Doyle\\ (Baker Street 221b, London)}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	          Main Document              %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+\begin{document}
+	
+	\frontmatter
+		\autofrontmatter
+	\mainmatter
+		Here the chapters start
+		\chapter{Just a test}
+			some contents
+		\chapter{Just a test 2}
+			more contents\footnote{This is another test}
+		\addchap{Does that exist?}
+			even more contents
+	\appendix
+		And here the appendix starts
+	\backmatter
+		Now the backmatter
+		
+\end{document}
