@@ -1,12 +1,3 @@
-%% JenThesis.cls
-%% Copyright by Christian Vetter from university Jena (Germany)
-%
-% This class is designed for any kind of thesis, e.g. diploma-, bachelor- or master thesis and should make it easier for you to create a realy cool design.
-% It is absolutely permitted (and desired) to modify and share this class.
-%
-% For fair comments and proposals you can reach me by mail. To provide spam, the mail address is encrypted by ROT13-algorithm. Use google to find an decryption-tool.
-% Puevfgvna.Irggre@hav-wran.qr
-
 \ProvidesClass{JenThesis}[2017/04/09 v0.26]
 \LoadClassWithOptions{scrbook}
 
