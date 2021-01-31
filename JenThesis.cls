@@ -16,14 +16,13 @@
 	\RequirePackage{xifthen}
 	\RequirePackage{graphicx}
 	\RequirePackage{geometry}
-	\RequirePackage{scrlayer-scrpage}
+	\RequirePackage[headsepline]{scrlayer-scrpage}
 	\RequirePackage{hyperref}
 	\RequirePackage{xcolor}
 	\RequirePackage[super]{nth}
 	\RequirePackage{avant}
 	
 	\newcommand{\eog}[2]{#1}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%	      Input field definitions        %%%%%
@@ -37,7 +36,7 @@
 	\newcommand*{\degree}[1]{\def\@degree{#1}}						\degree{}	
 	\newcommand*{\kind}[1]{\def\@kind{#1}}							\kind{}	
 	\newcommand*{\dayofdisputation}[1]{\def\@dayofdisputation{#1}}	\dayofdisputation{}
-	\newcommand*{\dayofsubmission}[1]{\def\@dayofsubmission{#1}}		\dayofsubmission{}
+	\newcommand*{\dayofsubmission}[1]{\def\@dayofsubmission{#1}}	\dayofsubmission{}
 	
 	\renewcommand*{\dedication}[2][]{\def\@dedication{#2}\def\@dedicationAddon{#1}} 
 	\dedication[]{}	
@@ -45,7 +44,11 @@
 		
 	\newcommand*\@referee{}
 	\newcounter{numreferees}
-	\newcommand*{\referee}[2][\stepcounter{numreferees}\eog{\parbox[t]{3.5ex}{\nth{\thenumreferees}} Referee}{\thenumreferees. Gutachter}]{\g@addto@macro{\@referee}{#1: &\quad #2\\}}
+	\newcommand*{\referee}[2][%
+		{\stepcounter{numreferees}\parbox[t]{3.5ex}{\nth{\thenumreferees}}Referee}%
+	]{%
+		\g@addto@macro{\@referee}{#1: &\quad \parbox[t]{6cm}{#2}\\\null\\}%
+	}
 	
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,6 +95,13 @@
 	\renewcommand{\textsf}[2][m]{{\sffamily\fontseries{#1}\selectfont#2}}
 	\setlength{\parskip}{1em}
 	
+	\automark[section]{chapter}
+	\clearpairofpagestyles
+	\cfoot[-- \pagemark\ --]{-- \pagemark\ --}
+	\chead[]{\headmark}
+	\setkomafont{pageheadfoot}{\normalfont}
+	
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%     Frontmatter and Title commands     %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
@@ -132,7 +142,7 @@
 			\normalsize\ifthenelse{\equal{\@dedicationAddon}{}}{}{(\@dedicationAddon)\hspace{1ex}}					
 			\vfill\vfill
 			\begin{tabular}{ll}
-				\@referee\\[1em]
+				\@referee
 				\ifthenelse{\equal{\@dayofsubmission}{}}{}{Day of Submission:&\quad 	\@dayofsubmission\\}
 				\ifthenelse{\equal{\@dayofdisputation}{}}{}{Day of Disputation:&\quad 	\@dayofdisputation}
 			\end{tabular}

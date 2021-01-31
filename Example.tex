@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_US
-\documentclass[oneside]{JenThesis}
+\documentclass[twoside]{JenThesis}
 %chaptertoc,english,print,oneside,parula,chapterprefix,numbers=noenddot,hidelinks
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,8 +39,8 @@
 	\dayofsubmission{\nth{25} May 1978\vspace*{1ex}}
 	\dayofdisputation{End of the Universe}
 	
-	\referee{\parbox[t]{5.5cm}{Prof.\,Dr. Herbert George Wells\\ (Kings College London)\\}}
-	\referee{\parbox[t]{5.5cm}{M.D. Arthur Conan Doyle\\ (Baker Street 221b, London)}}
+	\referee{Prof.\,Dr. Herbert George Wells\\ (Kings College London)}
+	\referee{M.D. Arthur Conan Doyle\\ (Baker Street 221b, London)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%	          Main Document              %%%%%
@@ -51,11 +51,22 @@
 	\frontmatter
 		\autofrontmatter
 	\mainmatter
-		Here the chapters start
-		\chapter{Just a test}
-			some contents
-		\chapter{Just a test 2}
-			more contents\footnote{This is another test}
+		\chapter{Introduction}
+			\lipsum[1-2]
+			\section{Vogons}
+				\lipsum[3-4]
+			\section{The number 42}
+				\lipsum[5-6]
+			\section{The bable fish}
+				\lipsum[7-8]
+		\chapter{The universe}
+			\lipsum[9]
+			\section{It is empty}
+				\lipsum[10-11]
+			\section{Very empty}
+				\lipsum[12-13]
+			\section{You can't even imagine how empty it is}
+				\lipsum[14-15]
 		\addchap{Does that exist?}
 			even more contents
 	\appendix
