@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_US
-\documentclass[twoside]{JenThesis}
-%chaptertoc,english,print,oneside,parula,chapterprefix,numbers=noenddot,hidelinks
+\documentclass[oneside, print, hidelinks]{JenThesis}
+%chaptertoc,english,numbers=noenddot
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%	            Packages                 %%%%%
@@ -51,7 +51,9 @@
 	\frontmatter
 		\autofrontmatter
 	\mainmatter
-		\chapter{Introduction}
+		\addchap{Introduction}
+			\lipsum[16-17]
+		\chapter{Important terminology}
 			\lipsum[1-2]
 			\section{Vogons}
 				\lipsum[3-4]
@@ -67,11 +69,15 @@
 				\lipsum[12-13]
 			\section{You can't even imagine how empty it is}
 				\lipsum[14-15]
-		\addchap{Does that exist?}
-			even more contents
+		\addchap{Conclusion \& Outlook}
 	\appendix
-		And here the appendix starts
+		\addchap{Appendix}
+			\section{How the Earth was built}
+				\lipsum[18]
+			\section{Vogon poetry death statistics}
+				\lipsum[19]
 	\backmatter
-		Now the backmatter
+		\section{Declaration of academic honesty}
+			\lipsum[20]
 		
 \end{document}

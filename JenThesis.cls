@@ -1,6 +1,6 @@
-\ProvidesClass{JenThesis}[2017/04/09 v0.26]
-\LoadClassWithOptions{scrbook}
-
+\ProvidesClass{JenThesis}[2021/02/02 v0.1]
+\PassOptionsToClass{\CurrentOption}{scrbook}
+\LoadClass[chapterprefix]{scrbook}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%	      Load Required Packages	     %%%%%
@@ -21,8 +21,6 @@
 	\RequirePackage{xcolor}
 	\RequirePackage[super]{nth}
 	\RequirePackage{avant}
-	
-	\newcommand{\eog}[2]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%	      Input field definitions        %%%%%
@@ -55,7 +53,13 @@
 %%%%%	      Process package options        %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	
-	\DeclareOption{print}{\geometry{bindingoffset=1mm}}
+	\DeclareOption{print}{\geometry{bindingoffset=10mm}}
+	
+	\newboolean{@chaptertoc}\setboolean{@chaptertoc}{false}
+	\DeclareOption{chaptertoc}{\setboolean{@chaptertoc}{true}}
+	
+	\newboolean{@hidelinks}\setboolean{@hidelinks}{false}
+	\DeclareOption{hidelinks}{\setboolean{@hidelinks}{true}}
 	
 	% Add language specific definitions here or find a way to figure out the user set language
 %	\DeclareOption{english}{\AtBeginDocument{\selectlanguage{english}}}
@@ -66,7 +70,7 @@
 	\ProcessOptions\relax
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%	       Define package layout         %%%%%
+%%%%%	         Define page layout          %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%		
 	
 	\geometry{%
@@ -80,6 +84,79 @@
 		footnotesep=15mm,
 		heightrounded
 	}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	             Color setup             %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+	\definecolor{C1}{HTML}{0B4A80}
+	\definecolor{C2}{HTML}{0F5CDD}
+	\definecolor{C3}{HTML}{127DD8}
+	\definecolor{G1}{HTML}{333333}
+	\definecolor{G2}{HTML}{555555}
+	\definecolor{G3}{HTML}{6D6D6D}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	          Headline formats           %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+	\renewcommand{\thechapter}{\Roman{chapter}}
+	\renewcommand*{\raggedchapter}{\raggedleft}
+	\renewcommand*{\chapterformat}{%
+		\chapappifchapterprefix{~\huge\thechapter}
+		\vspace{-\baselineskip}
+	}%
+
+	\RedeclareSectionCommand[beforeskip=0pt, afterskip=\baselineskip]{chapter}
+
+	\setkomafont{chapterprefix}{\Large}
+	\setkomafont{chapter}{\scshape\sffamily\fontseries{l}\selectfont\color{C1}\huge}
+	\setkomafont{section}{\scshape\sffamily\bfseries\color{C1}\Large}
+	\setkomafont{subsection}{\scshape\sffamily\color{C1}\large}
+	\setkomafont{subsubsection}{\scshape\sffamily\color{C1}}
+	\setkomafont{paragraph}{\scshape\sffamily\color{C1}\normalsize}
+	
+	
+	\renewcommand{\chapterlineswithprefixformat}[3]{%
+		#2\rule{\textwidth}{1pt}\par\nobreak%
+		#3\vspace{-0.5\baselineskip}\par\nobreak\rule{\textwidth}{1pt}\\[2em]%
+		\normalfont\normalsize\color{black}%
+		%\startcontents%
+		%\printcontents{l}{1}{\setlength{\parskip}{0em}}%
+	}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%	        HyperRef Settings	         %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+
+	\hypersetup{
+		unicode=true,		% non-Latin characters in Acrobat’s bookmarks
+		pdftoolbar=true,	% show Acrobat’s toolbar?
+		pdfmenubar=true,	% show Acrobat’s menu?
+		pdfnewwindow=true,	% links in new window
+		colorlinks=true,	% false: boxed links; true: colored links
+		linkcolor=C1,		% color of internal links
+		citecolor=C1,		% color of links to bibliography
+		filecolor=C1,		% color of file links
+		urlcolor=C1,		% color of external links
+	}
+	
+	\if@hidelinks
+	\hypersetup{
+		linkcolor={},		% color of internal links
+		citecolor={},		% color of links to bibliography
+		filecolor={},		% color of file links
+		urlcolor={}			% color of external links
+	}
+	\fi
+	
+	\AtBeginDocument{
+		\hypersetup{
+			pdftitle={\@title},    % title
+			pdfauthor={\@author},  % author
+			pdfsubject={\@kind},   % subject of the document
+	}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%         New length definitions       	 %%%%%
